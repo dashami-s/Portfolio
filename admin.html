@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashami S | Admin</title>
+  <meta name="description" content="Hidden admin editor for portfolio content.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="landingpage.html">
+        <div class="brand-mark">DS</div>
+        <div class="brand-copy">
+          <strong>Admin Panel</strong>
+          <span>Private content control</span>
+        </div>
+      </a>
+      <div class="topbar-actions">
+        <nav class="nav" aria-label="Admin actions">
+          <a href="landingpage.html">Preview Site</a>
+          <a href="portfolio.html">Open Portfolio</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle>Dark Mode</button>
+      </div>
+    </header>
+
+    <main class="admin-shell">
+      <section class="hero admin-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Control Room</span>
+          <h1>Shape content, optimize visuals, publish cleaner pages.</h1>
+          <p>
+            Use this private panel to update text, manage gallery items, and process uploaded images into lighter web-ready assets before saving them.
+          </p>
+          <div class="button-row">
+            <button id="save-all-hero" class="button primary" type="button">Save All Changes</button>
+            <button id="reload-all-hero" class="button secondary" type="button">Reload Content</button>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <section class="panel">
+            <div class="panel-title">
+              <h3>Live Summary</h3>
+              <span class="muted">updates instantly</span>
+            </div>
+            <div id="admin-stats" class="mini-stat-grid"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-title">
+              <h3>Image Output</h3>
+              <span class="muted" id="optimizer-mode-label">web-optimized</span>
+            </div>
+            <p>
+              Uploaded gallery images are resized and compressed before they are stored, helping the site stay fast and storage-friendly.
+            </p>
+          </section>
+        </aside>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-chip">live stats</div>
+          <div class="orbit-chip">image optimization</div>
+          <div class="orbit-chip">private editing</div>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <h2>Image Optimization</h2>
+        <div class="admin-grid">
+          <div class="field">
+            <label for="image-max-width">Max Width</label>
+            <input id="image-max-width" type="number" min="320" max="4000" step="10">
+          </div>
+          <div class="field">
+            <label for="image-max-height">Max Height</label>
+            <input id="image-max-height" type="number" min="320" max="4000" step="10">
+          </div>
+          <div class="field">
+            <label for="image-quality">JPEG Quality <span id="image-quality-value">82%</span></label>
+            <input id="image-quality" type="range" min="40" max="95" step="1">
+          </div>
+          <div class="field">
+            <label for="image-format">Preferred Format</label>
+            <select id="image-format" class="admin-select">
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/webp">WebP</option>
+              <option value="image/png">PNG</option>
+            </select>
+          </div>
+        </div>
+        <p class="admin-note">
+          Recommended for most gallery images: 1600 x 1200 max, JPEG or WebP, quality around 80 to 85.
+        </p>
+      </section>
+
+      <section class="admin-card">
+        <h2>Landing Page</h2>
+        <div class="admin-grid">
+          <div class="field">
+            <label for="landing-eyebrow-input">Eyebrow</label>
+            <input id="landing-eyebrow-input" type="text">
+          </div>
+          <div class="field">
+            <label for="landing-title-input">Title</label>
+            <input id="landing-title-input" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label for="landing-description-input">Description</label>
+          <textarea id="landing-description-input"></textarea>
+        </div>
+        <div class="admin-grid">
+          <div class="field">
+            <label for="landing-primary-label-input">Primary Button Label</label>
+            <input id="landing-primary-label-input" type="text">
+          </div>
+          <div class="field">
+            <label for="landing-primary-href-input">Primary Button Link</label>
+            <input id="landing-primary-href-input" type="text">
+          </div>
+          <div class="field">
+            <label for="landing-secondary-label-input">Secondary Button Label</label>
+            <input id="landing-secondary-label-input" type="text">
+          </div>
+          <div class="field">
+            <label for="landing-secondary-href-input">Secondary Button Link</label>
+            <input id="landing-secondary-href-input" type="text">
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-card">
+        <h2>About Page</h2>
+        <div class="admin-grid">
+          <div class="field">
+            <label for="about-eyebrow-input">Eyebrow</label>
+            <input id="about-eyebrow-input" type="text">
+          </div>
+          <div class="field">
+            <label for="about-title-input">Title</label>
+            <input id="about-title-input" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label for="about-description-input">Description</label>
+          <textarea id="about-description-input"></textarea>
+        </div>
+        <div id="about-cards-admin" class="item-list"></div>
+      </section>
+
+      <section class="admin-card">
+        <h2>Work Gallery</h2>
+        <div class="admin-grid">
+          <div class="field">
+            <label for="work-eyebrow-input">Eyebrow</label>
+            <input id="work-eyebrow-input" type="text">
+          </div>
+          <div class="field">
+            <label for="work-title-input">Title</label>
+            <input id="work-title-input" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label for="work-description-input">Description</label>
+          <textarea id="work-description-input"></textarea>
+        </div>
+        <div id="gallery-admin" class="item-list"></div>
+        <div class="gallery-admin-actions">
+          <button id="add-gallery-item" class="button secondary" type="button">Add Gallery Item</button>
+        </div>
+        <p class="admin-note">Images are stored in your browser storage. This works well for a small gallery, but very large image collections can exceed local storage limits.</p>
+      </section>
+
+      <section class="admin-card">
+        <h2>Contact Page</h2>
+        <div class="admin-grid">
+          <div class="field">
+            <label for="contact-eyebrow-input">Eyebrow</label>
+            <input id="contact-eyebrow-input" type="text">
+          </div>
+          <div class="field">
+            <label for="contact-title-input">Title</label>
+            <input id="contact-title-input" type="text">
+          </div>
+          <div class="field">
+            <label for="contact-email-input">Email</label>
+            <input id="contact-email-input" type="text">
+          </div>
+          <div class="field">
+            <label for="contact-linkedin-input">LinkedIn URL</label>
+            <input id="contact-linkedin-input" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label for="contact-description-input">Description</label>
+          <textarea id="contact-description-input"></textarea>
+        </div>
+        <div id="contact-notes-admin" class="item-list"></div>
+      </section>
+
+      <section class="admin-card">
+        <h2>Controls</h2>
+        <div class="admin-actions">
+          <button id="save-all" class="button primary" type="button">Save Changes</button>
+          <button id="reset-all" class="button danger" type="button">Reset To Default</button>
+          <button id="reload-all" class="button ghost" type="button">Reload Current Data</button>
+        </div>
+        <p id="admin-status" class="admin-note">Changes stay in this browser and update the public pages immediately after saving.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="theme.js"></script>
+  <script src="site-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

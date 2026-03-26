@@ -3,874 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashami S | Portfolio</title>
-  <meta
-    name="description"
-    content="Portfolio of Dashami S, a Computer Science Engineering student focused on analyst and PMO support, project coordination, reporting, and modern web solutions."
-  >
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f7f4ee;
-      --surface: rgba(255, 255, 255, 0.72);
-      --surface-strong: #fffdf8;
-      --text: #1a1a1a;
-      --muted: #5f5a52;
-      --line: rgba(40, 32, 22, 0.1);
-      --accent: #0f766e;
-      --accent-2: #c2410c;
-      --accent-3: #164e63;
-      --shadow: 0 24px 60px rgba(26, 26, 26, 0.1);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --max-width: 1200px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Manrope", "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.16), transparent 30%),
-        radial-gradient(circle at top right, rgba(194, 65, 12, 0.14), transparent 28%),
-        linear-gradient(180deg, #fbf7f0 0%, #f2ede4 100%);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page-shell {
-      width: min(calc(100% - 32px), var(--max-width));
-      margin: 0 auto;
-      padding: 24px 0 56px;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 16px;
-      z-index: 30;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 18px;
-      margin-bottom: 28px;
-      background: rgba(255, 253, 248, 0.84);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      border-radius: 999px;
-      box-shadow: 0 14px 40px rgba(26, 26, 26, 0.08);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-3));
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav-links a {
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: var(--text);
-      background: rgba(15, 118, 110, 0.1);
-      transform: translateY(-1px);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.9fr);
-      gap: 24px;
-      align-items: stretch;
-      margin-bottom: 24px;
-    }
-
-    .hero-main,
-    .hero-side,
-    .card,
-    .timeline-item,
-    .project-card,
-    .list-card,
-    .contact-panel {
-      background: var(--surface);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-main {
-      position: relative;
-      overflow: hidden;
-      padding: 32px;
-      border-radius: var(--radius-xl);
-    }
-
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: auto -40px -60px auto;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(194, 65, 12, 0.25), transparent 65%);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(15, 118, 110, 0.1);
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin: 0;
-      font-family: "Space Grotesk", sans-serif;
-      letter-spacing: -0.04em;
-    }
-
-    h1 {
-      margin-top: 18px;
-      font-size: clamp(2.6rem, 7vw, 5.6rem);
-      line-height: 0.95;
-      max-width: 10ch;
-    }
-
-    .hero-subtitle {
-      margin-top: 18px;
-      max-width: 60ch;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 50px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .button:hover,
-    .button:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(26, 26, 26, 0.12);
-    }
-
-    .button.primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-3));
-    }
-
-    .button.secondary {
-      color: var(--text);
-      border-color: rgba(26, 26, 26, 0.1);
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .metric-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .metric {
-      padding: 16px 18px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(26, 26, 26, 0.06);
-    }
-
-    .metric strong {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-
-    .metric span {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .hero-side {
-      padding: 24px;
-      border-radius: var(--radius-xl);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      justify-content: space-between;
-    }
-
-    .hero-panel {
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.68);
-      border: 1px solid rgba(26, 26, 26, 0.06);
-    }
-
-    .hero-panel h2 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-panel p,
-    .hero-panel li,
-    .card p,
-    .timeline-copy,
-    .project-card p,
-    .list-card p,
-    .contact-panel p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .contact-list,
-    .quick-points,
-    .bullet-list {
-      display: grid;
-      gap: 10px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .contact-list a,
-    .contact-list span {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(15, 118, 110, 0.08);
-      word-break: break-word;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: var(--radius-xl);
-      grid-column: span 12;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 22px;
-    }
-
-    .card-header h2 {
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-    }
-
-    .card-header span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .skill-group {
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(26, 26, 26, 0.06);
-    }
-
-    .skill-group h3 {
-      font-size: 1.1rem;
-      margin-bottom: 14px;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tag {
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 0.93rem;
-      background: #fff;
-      border: 1px solid rgba(26, 26, 26, 0.08);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
-    .timeline-item {
-      padding: 22px;
-      border-radius: var(--radius-lg);
-    }
-
-    .timeline-top {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px 16px;
-      margin-bottom: 14px;
-    }
-
-    .timeline-top h3 {
-      font-size: 1.18rem;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .project-grid,
-    .list-grid,
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .project-card,
-    .list-card,
-    .contact-panel {
-      padding: 22px;
-      border-radius: var(--radius-lg);
-    }
-
-    .project-card h3,
-    .list-card h3,
-    .contact-panel h3 {
-      font-size: 1.14rem;
-      margin-bottom: 10px;
-    }
-
-    .project-meta {
-      display: inline-flex;
-      margin-bottom: 12px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(22, 78, 99, 0.1);
-      color: var(--accent-3);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .contact-panel {
-      background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 35%),
-        rgba(255, 255, 255, 0.82);
-    }
-
-    .footer {
-      margin-top: 24px;
-      padding: 26px 18px 12px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      animation: revealUp 0.7s ease forwards;
-    }
-
-    .reveal.delay-1 { animation-delay: 0.08s; }
-    .reveal.delay-2 { animation-delay: 0.16s; }
-    .reveal.delay-3 { animation-delay: 0.24s; }
-
-    @keyframes revealUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .hero,
-      .project-grid,
-      .list-grid,
-      .contact-grid,
-      .split {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar {
-        border-radius: 28px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .page-shell {
-        width: min(calc(100% - 20px), var(--max-width));
-        padding-top: 14px;
-      }
-
-      .topbar {
-        position: static;
-        padding: 16px;
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-      }
-
-      .hero-main,
-      .hero-side,
-      .card {
-        padding: 22px;
-      }
-
-      h1 {
-        max-width: none;
-      }
-
-      .metric-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <title>Dashami S | Landing</title>
+  <meta name="description" content="A warm, multi-page portfolio landing page for Dashami S.">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="landing">
   <div class="page-shell">
-    <header class="topbar reveal">
-      <div class="brand">
+    <header class="topbar">
+      <a class="brand" href="landingpage.html">
         <div class="brand-mark">DS</div>
-        <span>Dashami S</span>
+        <div class="brand-copy">
+          <strong>Dashami S</strong>
+          <span>Creative portfolio</span>
+        </div>
+      </a>
+      <div class="topbar-actions">
+        <nav class="nav" aria-label="Primary">
+          <a class="active" href="landingpage.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle>Dark Mode</button>
       </div>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </header>
 
     <main>
       <section class="hero">
-        <article class="hero-main reveal delay-1">
-          <span class="eyebrow">Analyst / PMO Support Focus</span>
-          <h1>Building clarity, momentum, and reliable execution.</h1>
-          <p class="hero-subtitle">
-            I’m Dashami S, a Computer Science Engineering student based in Bengaluru with hands-on experience in
-            project coordination, documentation, reporting, and team collaboration through academic and organizational work.
-            I enjoy turning ideas into structured progress and helping teams stay aligned, informed, and on time.
+        <div class="hero-copy">
+          <span id="landing-eyebrow" class="eyebrow">Dashami S</span>
+          <h1 id="landing-title">Analyst-minded. Detail-driven. Ready to support delivery.</h1>
+          <p id="landing-description">
+            Computer Science Engineering graduate with experience in project coordination, documentation, reporting, and team collaboration through academic and organizational work.
           </p>
-          <div class="hero-actions">
-            <a class="button primary" href="mailto:dashamishetty2004@gmail.com">Let’s Connect</a>
-            <a class="button secondary" href="#projects">View Projects</a>
+          <div class="button-row">
+            <a id="landing-primary-link" class="button primary" href="portfolio.html#about"><span id="landing-primary-label">View Portfolio</span></a>
+            <a id="landing-secondary-link" class="button secondary" href="portfolio.html#projects"><span id="landing-secondary-label">See Projects</span></a>
           </div>
-          <div class="metric-strip">
-            <div class="metric">
-              <strong>Top 10</strong>
-              <span>Capstone project shortlist at Inventra'25</span>
-            </div>
-            <div class="metric">
-              <strong>50+</strong>
-              <span>Participants supported during RC Rally event coordination</span>
-            </div>
-            <div class="metric">
-              <strong>450</strong>
-              <span>Projects competed against in the 2024 student expo</span>
-            </div>
-          </div>
-        </article>
+          <div id="landing-stats" class="mini-stat-grid"></div>
+        </div>
 
-        <aside class="hero-side reveal delay-2">
-          <section class="hero-panel">
-            <h2>Quick Profile</h2>
-            <ul class="quick-points">
-              <li>Computer Science Engineering student at Presidency University</li>
-              <li>Interested in analyst, reporting, and PMO-support roles</li>
-              <li>Brings structure through documentation and follow-through</li>
+        <aside class="hero-side">
+          <section class="panel">
+            <div class="panel-title">
+              <h3>Quick Profile</h3>
+              <span class="muted">resume snapshot</span>
+            </div>
+            <ul class="list-clean">
+              <li>Computer Science Engineering graduate</li>
+              <li>Interested in analyst and PMO-support roles</li>
+              <li>Focused on documentation, reporting, and coordination</li>
             </ul>
           </section>
 
-          <section class="hero-panel">
-            <h2>Reach Out</h2>
-            <div class="contact-list">
-              <a href="mailto:dashamishetty2004@gmail.com">dashamishetty2004@gmail.com</a>
-              <a href="tel:8971408959">8971408959</a>
-              <span>Bangalore, Karnataka</span>
-              <a href="https://www.linkedin.com/in/dashamis5426" target="_blank" rel="noreferrer">LinkedIn Profile</a>
-              <a href="https://github.com/Dashami-S-2004" target="_blank" rel="noreferrer">GitHub Portfolio</a>
+          <section class="panel">
+            <div class="panel-title">
+              <h3>Based In</h3>
+              <span class="muted" id="year-stamp">2026</span>
             </div>
+            <p>
+              Bangalore, Karnataka. Available to connect through email, phone, LinkedIn, and GitHub from the portfolio page.
+            </p>
           </section>
         </aside>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-chip">analyst support</div>
+          <div class="orbit-chip">project coordination</div>
+          <div class="orbit-chip">timely delivery</div>
+        </div>
       </section>
 
-      <section id="about" class="section-grid">
-        <article class="card reveal">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">About</span>
-              <h2>Career Objective</h2>
-            </div>
-            <span>Focused on process, reporting, and delivery support</span>
-          </div>
-          <p>
-            Detail-oriented Computer Science Engineering graduate with experience in project coordination, documentation,
-            and team collaboration through academic and organizational projects. Looking to contribute as an Analyst or
-            PMO-support professional by helping teams track project progress, maintain reports, support process
-            improvement, and enable on-time delivery while continuing to learn industry best practices.
-          </p>
-        </article>
-      </section>
-
-      <section id="skills" class="section-grid">
-        <article class="card reveal delay-1">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Capabilities</span>
-              <h2>Skills Snapshot</h2>
-            </div>
-            <span>Communication, analysis, and technical fundamentals</span>
-          </div>
-          <div class="split">
-            <section class="skill-group">
-              <h3>Soft Skills</h3>
-              <div class="tag-list">
-                <span class="tag">Professional communication</span>
-                <span class="tag">Cross-functional collaboration</span>
-                <span class="tag">Analytical problem solving</span>
-                <span class="tag">Time &amp; task management</span>
-                <span class="tag">Adaptability</span>
-                <span class="tag">Ownership &amp; accountability</span>
-                <span class="tag">Attention to detail</span>
-              </div>
-            </section>
-            <section class="skill-group">
-              <h3>Technical Skills</h3>
-              <div class="tag-list">
-                <span class="tag">Python</span>
-                <span class="tag">Java</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">C++</span>
-                <span class="tag">C#</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">NumPy</span>
-                <span class="tag">Power BI</span>
-                <span class="tag">Excel Analysis</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">GitHub</span>
-                <span class="tag">Arduino</span>
-                <span class="tag">Raspberry Pi</span>
-                <span class="tag">ESP32</span>
-              </div>
-            </section>
-          </div>
-        </article>
-      </section>
-
-      <section id="experience" class="section-grid">
-        <article class="card reveal delay-2">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Experience</span>
-              <h2>Leadership &amp; Team Coordination</h2>
-            </div>
-            <span>Academic and club experience with strong ownership</span>
-          </div>
-          <div class="timeline">
-            <article class="timeline-item">
-              <div class="timeline-top">
-                <div>
-                  <h3>Social Media Manager, STEM Club</h3>
-                  <div class="meta">Presidency University, Bengaluru, India</div>
-                </div>
-                <div class="meta">08/2025 – Present</div>
-              </div>
-              <ul class="bullet-list">
-                <li class="timeline-copy">Planned and organized club activities while tracking engagement outcomes.</li>
-                <li class="timeline-copy">Coordinated with team members and faculty for approvals and updates.</li>
-                <li class="timeline-copy">Maintained basic documentation and progress updates.</li>
-              </ul>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-top">
-                <div>
-                  <h3>Core Member, BUILD Club</h3>
-                  <div class="meta">Presidency University, Bengaluru, India</div>
-                </div>
-                <div class="meta">07/2024 – Present</div>
-              </div>
-              <ul class="bullet-list">
-                <li class="timeline-copy">Supported project and event execution through task coordination.</li>
-                <li class="timeline-copy">Assisted in documentation and the smooth conduct of workshops.</li>
-                <li class="timeline-copy">Collaborated with peers to ensure the timely completion of activities.</li>
-              </ul>
-            </article>
-          </div>
-        </article>
-
-        <article class="card reveal delay-3">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Education</span>
-              <h2>Academic Background</h2>
-            </div>
-            <span>08/2022 – Present</span>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-top">
-              <div>
-                <h3>B.Tech in Computer Science and Engineering</h3>
-                <div class="meta">Presidency University, Bengaluru, India</div>
-              </div>
-            </div>
-            <p class="timeline-copy">
-              Building a foundation across software development, data analysis, web technologies, and hands-on embedded systems through coursework and applied projects.
-            </p>
-          </div>
-        </article>
-      </section>
-
-      <section id="projects" class="section-grid">
-        <article class="card reveal">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Projects</span>
-              <h2>Selected Work</h2>
-            </div>
-            <span>Practical work with coordination, analysis, and delivery focus</span>
-          </div>
-          <div class="project-grid">
-            <article class="project-card">
-              <span class="project-meta">07/2025 – Present</span>
-              <h3>AI-Powered Autonomous Security RoboDog</h3>
-              <p>Planned project activities, coordinated task execution, and maintained documentation throughout development.</p>
-              <ul class="bullet-list">
-                <li>Delivered a working prototype shortlisted in the Top 10 projects.</li>
-                <li>Combined robotics and AI-powered security concepts into a capstone build.</li>
-              </ul>
-            </article>
-
-            <article class="project-card">
-              <span class="project-meta">04/2025 – 05/2025</span>
-              <h3>Personal Finance Tracker Web Application</h3>
-              <p>Analyzed user needs and translated them into features designed for clarity and accurate financial tracking.</p>
-              <ul class="bullet-list">
-                <li>Ensured accuracy of calculations and application data flow.</li>
-                <li>Created dashboards for clean data visualization.</li>
-              </ul>
-            </article>
-
-            <article class="project-card">
-              <span class="project-meta">10/2023 – 05/2024</span>
-              <h3>Handibuddy.com Mobile Application</h3>
-              <p>Worked with accessibility-focused needs, documented workflows, and supported structured feature delivery.</p>
-              <ul class="bullet-list">
-                <li>Focused on usability and user-centered thinking.</li>
-                <li>Helped maintain momentum through documentation and coordination.</li>
-              </ul>
-            </article>
-
-            <article class="project-card">
-              <span class="project-meta">Expo 2024 Highlight</span>
-              <h3>Healthcare Detection Websites</h3>
-              <p>Built websites for brain haemorrhage detection and identifying different stages of lung diseases.</p>
-              <ul class="bullet-list">
-                <li>Presented as part of a project expo ranking in the top 26 out of 450 projects.</li>
-                <li>Applied web development skills to health-related problem statements.</li>
-              </ul>
-            </article>
-          </div>
-        </article>
-      </section>
-
-      <section class="section-grid">
-        <article class="card reveal delay-1">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Recognition</span>
-              <h2>Certifications &amp; Achievements</h2>
-            </div>
-            <span>Continuous learning with hands-on outcomes</span>
-          </div>
-          <div class="list-grid">
-            <section class="list-card">
-              <h3>Certifications</h3>
-              <ul class="bullet-list">
-                <li>The Complete Full-Stack Web Development Bootcamp</li>
-                <li>Data Visualization Techniques from Infosys Springboard</li>
-                <li>Machine Learning Using Python from SimpliLearn SkillUP</li>
-                <li>Microsoft Power BI Desktop for Business Intelligence</li>
-                <li>AWS Certified Cloud Practitioner CLF-C02 (2025)</li>
-              </ul>
-            </section>
-
-            <section class="list-card">
-              <h3>Achievements</h3>
-              <ul class="bullet-list">
-                <li>Inventra'25 Capstone Project Expo: RoboDog project shortlisted in the Top 10 on 27/11/2025.</li>
-                <li>IoT and Robotics VAC Certification on 07/07/2025 with practical prototype work.</li>
-                <li>Student Project Expo 2024: Ranked 26th out of 450 projects on 03/06/2024.</li>
-              </ul>
-            </section>
-          </div>
-        </article>
-      </section>
-
-      <section class="section-grid">
-        <article class="card reveal delay-2">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Community</span>
-              <h2>Organizations &amp; Languages</h2>
-            </div>
-            <span>Coordinating events and collaborating across teams</span>
-          </div>
-          <div class="contact-grid">
-            <section class="contact-panel">
-              <h3>Organizations</h3>
-              <ul class="bullet-list">
-                <li>Build Club-MAKERSPACE Event Coordinator for RC Rally, managing logistics, track setup, and support for 50+ participants in 04/2025.</li>
-                <li>Volunteer at the Office of International Affairs, recognized for dedication during "Achivers Dialogues-2024" in 08/2024.</li>
-              </ul>
-            </section>
-
-            <section class="contact-panel">
-              <h3>Languages</h3>
-              <ul class="bullet-list">
-                <li>Kannada: Native / Bilingual</li>
-                <li>English: Fluent</li>
-                <li>Hindi: Basic</li>
-              </ul>
-            </section>
-          </div>
-        </article>
-      </section>
-
-      <section id="contact" class="section-grid">
-        <article class="card reveal delay-3">
-          <div class="card-header">
-            <div>
-              <span class="eyebrow">Contact</span>
-              <h2>Let’s Build Something Organized and Impactful</h2>
-            </div>
-            <span>Available for collaboration, internships, and early-career opportunities</span>
-          </div>
-          <div class="contact-grid">
-            <section class="contact-panel">
-              <h3>Get in Touch</h3>
-              <p>
-                If you are looking for someone who can contribute with documentation, coordination, reporting, and a
-                strong execution mindset, I’d love to connect.
-              </p>
-              <div class="hero-actions">
-                <a class="button primary" href="mailto:dashamishetty2004@gmail.com">Email Me</a>
-                <a class="button secondary" href="tel:8971408959">Call Me</a>
-              </div>
-            </section>
-
-            <section class="contact-panel">
-              <h3>Profiles</h3>
-              <div class="contact-list">
-                <span>Bangalore, Karnataka</span>
-                <a href="https://www.linkedin.com/in/dashamis5426" target="_blank" rel="noreferrer">www.linkedin.com/in/dashamis5426</a>
-                <a href="https://github.com/Dashami-S-2004" target="_blank" rel="noreferrer">github.com/Dashami-S-2004</a>
-              </div>
-            </section>
-          </div>
-        </article>
+      <section id="landing-highlights" class="section grid-3"></section>
+      <section class="moving-line" aria-label="Highlights in motion">
+        <div class="moving-line-track">
+          <span class="moving-pill">Python</span>
+          <span class="moving-pill">Power BI</span>
+          <span class="moving-pill">Project coordination</span>
+          <span class="moving-pill">Documentation</span>
+          <span class="moving-pill">Cross-functional collaboration</span>
+          <span class="moving-pill">Python</span>
+          <span class="moving-pill">Power BI</span>
+          <span class="moving-pill">Project coordination</span>
+          <span class="moving-pill">Documentation</span>
+          <span class="moving-pill">Cross-functional collaboration</span>
+        </div>
       </section>
     </main>
 
-    <footer class="footer">
-      Crafted as a modern one-page portfolio for Dashami S.
-    </footer>
+    <footer class="footer">A lighter digital portfolio with room for work, story, and motion.</footer>
   </div>
+  <script src="theme.js"></script>
+  <script src="site-data.js"></script>
+  <script src="site-render.js"></script>
 </body>
 </html>
