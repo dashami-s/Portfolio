@@ -114,7 +114,7 @@
               <div class="brand-mark">DS</div>
               <div class="brand-copy">
                 <strong>Dashami S</strong>
-                <span>Analyst / PMO Support</span>
+                <span>B.Tech CSE Student</span>
               </div>
             </div>
             <div class="topbar-actions">
@@ -209,7 +209,7 @@
               <div class="brand-mark">DS</div>
               <div class="brand-copy">
                 <strong>Dashami S</strong>
-                <span>Analyst / PMO Support</span>
+                <span>B.Tech CSE Student</span>
               </div>
             </div>
             <div class="topbar-actions">

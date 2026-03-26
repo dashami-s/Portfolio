@@ -43,28 +43,28 @@
         <section class="section grid-2">
           <article class="panel detail-panel reveal-card accent-1">
             <em>Certifications</em>
-            <h3>Credentials</h3>
+            <h3>Certifications</h3>
             <ul class="bullet-stack compact">
               ${certifications}
             </ul>
           </article>
           <article class="panel detail-panel reveal-card accent-2">
             <em>Achievements</em>
-            <h3>Highlights</h3>
+            <h3>Achievements</h3>
             <div class="list-blocks">
               ${renderBlocks(content.achievements)}
             </div>
           </article>
           <article class="panel detail-panel reveal-card accent-3">
             <em>Organizations</em>
-            <h3>Involvement</h3>
+            <h3>Organizations</h3>
             <div class="list-blocks">
               ${renderBlocks(content.organizations)}
             </div>
           </article>
           <article class="panel detail-panel reveal-card accent-1">
             <em>Languages</em>
-            <h3>Communication</h3>
+            <h3>Languages</h3>
             <div class="list-blocks">
               ${renderBlocks(content.languages, "language")}
             </div>

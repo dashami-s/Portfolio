@@ -1,84 +1,84 @@
 (function () {
-  const STORAGE_KEY = "dashami_portfolio_content_v6";
+  const STORAGE_KEY = "dashami_portfolio_content_v9";
 
   const defaultContent = {
     landing: {
-      eyebrow: "Dashami S",
-      title: "Detail-oriented support for project coordination and reporting.",
+      eyebrow: "DASHAMI S",
+      title: "B.Tech CSE Student | Ready for Available Job Profiles",
       description:
-        "Computer Science Engineering graduate with experience in project coordination, documentation, reporting, and team collaboration through academic and organizational work.",
+        "B.Tech Computer Science and Engineering student with experience in project coordination, documentation, and team collaboration, ready to contribute across available entry-level job profiles.",
       primaryLabel: "View Portfolio",
       primaryHref: "portfolio.html#about",
-      secondaryLabel: "See Projects",
+      secondaryLabel: "Projects",
       secondaryHref: "portfolio.html#projects",
       profilePanel: {
-        title: "Profile Summary",
-        meta: "Education and focus",
+        title: "Education",
+        meta: "Presidency University",
         lines: [
-          "B.Tech in Computer Science and Engineering",
-          "Presidency University, Bengaluru",
-          "Interested in Analyst / PMO-support roles"
+          "B.Tech (Computer Science and Engineering)",
+          "08/2022 - Present",
+          "Bengaluru, India"
         ]
       },
       contactPanel: {
-        title: "Location and contact",
-        meta: "Bengaluru, Karnataka",
-        description: "Email: dashamishetty2004@gmail.com | Phone: 8971408959"
+        title: "Contact",
+        meta: "Banglore, Karnataka",
+        description: "dashamishetty2004@gmail.com | 8971408959"
       },
-      chips: ["Power BI", "Documentation", "Project coordination"],
+      chips: ["Python", "Power BI", "Project Coordination"],
       stats: [
         { value: "Top 10", label: "Inventra'25 Capstone shortlist" },
-        { value: "50+", label: "Participants supported in RC Rally" },
-        { value: "26 / 450", label: "Student Project Expo ranking" }
+        { value: "26 / 450", label: "Student Project Expo 2024 rank" },
+        { value: "50+", label: "RC Rally participants supported" }
       ],
       highlights: [
         {
           label: "Objective",
-          title: "Analyst / PMO-support focus",
-          description: "Interested in tracking progress, maintaining reports, supporting process improvement, and helping teams stay on time.",
+          title: "Entry-level job profile readiness",
+          description: "Support teams with tracking project progress, report maintenance, process improvement, and on-time delivery.",
           href: "portfolio.html#about",
-          cta: "Read Objective"
+          cta: "Career Objective"
         },
         {
           label: "Experience",
-          title: "Coordination and documentation",
-          description: "Hands-on involvement in planning activities, securing approvals, and keeping updates visible across student teams.",
+          title: "STEM Club | BUILD Club",
+          description: "Worked on activity planning, approvals, documentation, and timely execution as Social Media Manager and Core Member.",
           href: "portfolio.html#experience",
-          cta: "View Experience"
+          cta: "Professional Experience"
         },
         {
           label: "Projects",
-          title: "AI, finance, accessibility",
-          description: "Academic work spanning robotics, finance tracking, accessibility, and healthcare-focused web solutions.",
+          title: "RoboDog | Finance Tracker | Handibuddy",
+          description: "Built projects across AI robotics, finance tracking, and accessibility-focused mobile application development.",
           href: "portfolio.html#projects",
-          cta: "See Projects"
+          cta: "Projects"
         }
       ]
     },
     about: {
-      eyebrow: "Career Objective",
-      title: "Supporting structured progress, clear reporting, and on-time delivery.",
+      eyebrow: "CAREER OBJECTIVE",
+      title: "Detail-oriented Computer Science Engineering graduate.",
       description:
-        "Detail-oriented Computer Science Engineering graduate with experience in project coordination, documentation, and team collaboration through academic and organizational projects. Looking to work as an Analyst or PMO-support professional where I can assist teams in tracking project progress, maintaining reports, supporting process improvement, and enabling on-time delivery while learning industry best practices.",
+        "Detail-oriented Computer Science Engineering graduate with experience in project coordination, documentation, and team collaboration through academic and organizational projects. Ready to work according to available entry-level job profiles where I can assist teams in tracking project progress, maintenance of reports, support to process improvement, and on-time delivery while learning industry best practices.",
       cards: [
         {
-          label: "Focus",
-          title: "Reporting and coordination",
-          description: "Comfortable supporting teams with updates, follow-through, task visibility, and communication across moving pieces."
+          label: "Role Focus",
+          title: "Ready for suitable job profiles",
+          description: "Prepared to contribute across available entry-level roles with focus on project tracking, reporting, and execution support."
         },
         {
           label: "Strength",
-          title: "Documentation and clarity",
-          description: "Brings attention to detail, structured notes, and dependable progress visibility to collaborative work."
+          title: "Coordination and documentation",
+          description: "Experience with project coordination, approvals, and structured documentation in academic and organizational teams."
         },
         {
-          label: "Approach",
-          title: "Analytical problem solving",
-          description: "Combines technical fundamentals with a practical mindset for organized execution and continuous improvement."
+          label: "Work Style",
+          title: "Collaborative and detail-oriented",
+          description: "Combines professional communication, analytical problem solving, and accountability in fast-paced team environments."
         }
       ],
       education: {
-        degree: "B.Tech in Computer Science and Engineering",
+        degree: "B.Tech (Computer Science and Engineering)",
         institution: "Presidency University",
         dates: "08/2022 - Present",
         location: "Bengaluru, India"
@@ -87,43 +87,43 @@
         "Professional communication",
         "Cross-functional collaboration",
         "Analytical problem solving",
-        "Time and task management",
+        "Time & task management",
         "Adaptability in fast-paced environments",
-        "Ownership and accountability",
+        "Ownership & accountability",
         "Attention to detail"
       ],
       technicalGroups: [
         {
-          label: "Programming and Scripting",
+          label: "Programming & Scripting",
           items: ["Python", "Java", "JavaScript", "C++", "C#"]
         },
         {
-          label: "Data Analysis and Reporting",
+          label: "Data Analysis & Reporting",
           items: ["Python (NumPy, Pandas)", "Power BI", "Excel-based analysis"]
         },
         {
-          label: "Web and Application Fundamentals",
+          label: "Web & Application Fundamentals",
           items: ["HTML", "CSS", "Node.js"]
         },
         {
           label: "Databases",
-          items: ["MySQL"]
+          items: ["MySQL (data storage, querying, reporting)"]
         },
         {
-          label: "Version Control and Collaboration",
+          label: "Version Control & Collaboration",
           items: ["GitHub"]
         },
         {
-          label: "Hardware and Embedded Systems",
+          label: "Hardware & Embedded Systems (Academic Projects)",
           items: ["Arduino", "Raspberry Pi", "ESP32"]
         }
       ]
     },
     experience: {
-      eyebrow: "Professional Experience",
-      title: "Academic and organizational roles with coordination ownership.",
+      eyebrow: "PROFESSIONAL EXPERIENCE",
+      title: "STEM Club and BUILD Club roles",
       description:
-        "Experience across student clubs and university activities with emphasis on planning, communication, approvals, documentation, and keeping execution on track.",
+        "Planned and organized activities, coordinated approvals and updates, maintained project documentation, and supported timely team execution.",
       roles: [
         {
           organization: "STEM Club",
@@ -150,26 +150,25 @@
       ]
     },
     work: {
-      eyebrow: "Projects",
-      title: "Selected academic and product-focused work.",
+      eyebrow: "PROJECTS",
+      title: "Academic and application-focused project work",
       description:
-        "Projects spanning AI, web applications, accessibility, and healthcare-focused problem solving, with attention to execution, documentation, and user needs.",
+        "AI-Powered Autonomous Security RoboDog (Capstone Project), Personal Finance Tracker - Web Application, and Handibuddy.com - Mobile Application.",
       gallery: [
         {
           label: "07/2025 - Present",
-          title: "AI-Powered Autonomous Security RoboDog",
-          description: "Capstone project focused on AI-powered autonomous security with structured execution and documentation.",
+          title: "AI-Powered Autonomous Security RoboDog (Capstone Project)",
+          description: "Planned project activities and coordinated task execution.",
           image: "",
           bullets: [
-            "Planned project activities and coordinated task execution.",
             "Maintained documentation and progress updates.",
             "Delivered a working prototype, shortlisted in the Top 10 projects."
           ]
         },
         {
           label: "04/2025 - 05/2025",
-          title: "Personal Finance Tracker Web Application",
-          description: "Analyzed user needs and translated them into application features for practical financial tracking and reporting.",
+          title: "Personal Finance Tracker - Web Application",
+          description: "Analyzed user needs and translated them into application features.",
           image: "",
           bullets: [
             "Ensured accuracy of financial calculations and data flow.",
@@ -178,84 +177,83 @@
         },
         {
           label: "10/2023 - 05/2024",
-          title: "Handibuddy.com Mobile Application",
-          description: "Worked with accessibility-focused user needs, documented workflows, and supported structured feature delivery.",
+          title: "Handibuddy.com - Mobile Application",
+          description: "Analyzed user needs with focus on accessibility.",
           image: "",
           bullets: [
-            "Analyzed user needs with focus on accessibility.",
             "Documented workflows and supported feature delivery."
           ]
         }
       ]
     },
     recognition: {
-      eyebrow: "Recognition",
-      title: "Certifications, achievements, and involvement.",
+      eyebrow: "CERTIFICATIONS & ACHIEVEMENTS",
+      title: "Certifications, achievements, organisations, and languages",
       description:
-        "A snapshot of certifications, recognitions, event coordination, and broader contribution beyond coursework.",
+        "Portfolio highlights from certifications, university project expos, event coordination, and communication skills.",
       certifications: [
-        "The Complete Full-Stack Web Development Bootcamp",
-        "Data Visualization Techniques from Infosys Springboard",
-        "Machine Learning Using Python from SimpliLearn SkillUP",
-        "Microsoft Power BI Desktop for Business Intelligence",
-        "AWS Certified Cloud Practitioner CLF-C02 (2025)"
+        "The Complete Full-Stack Web Development Bootcamp.",
+        "Data Visualization Techniques from Infosys, Springboard.",
+        "Machine Learning, using Python from SimpliLearn SkillUP.",
+        "Microsoft Power BI Desktop for Business Intelligence.",
+        "AWS certified Cloud Practitioner CLF-CO2 2025."
       ],
       achievements: [
         {
-          title: "Inventra'25 - Capstone Project Expo",
+          title: "INVENTRA'25 - CAPSTONE PROJECT EXPO",
           date: "27/11/2025",
-          description: "Represented the RoboDog project and got into the Top 10 projects. Hardware project with integration of face detection as an AI-powered autonomous security robot."
+          description: "Presidency University. Represented the ROBO-DOG project and got into the Top 10 Projects. Hardware project with integration of face detection has an AI-Powered Autonomous Security Robot."
         },
         {
-          title: "IoT and Robotics - VAC Certification",
+          title: "IOT AND ROBOTICS - VAC CERTIFICATION",
           date: "07/07/2025",
-          description: "Completed an IoT and Robotics certification, gaining hands-on experience with sensors, automation, and building prototypes like an object-detecting car and RoboDog."
+          description: "Presidency University. Completed an IoT & Robotics certification, gaining hands-on experience with sensors, automation, and building prototypes like an object-detecting car and RoboDog."
         },
         {
-          title: "Student Project Expo 2024",
+          title: "STUDENT PROJECT EXPO 2024",
           date: "03/06/2024",
-          description: "Top 26th project out of 450 projects. Developed two websites, one for brain haemorrhage and another for detecting different stages of lung diseases."
+          description: "Presidency University. Top 26th Project out of 450 Projects. Developed two websites, one for Brain Haemorrhage and another for Detecting different stages Lung Diseases."
         }
       ],
       organizations: [
         {
-          title: "Build Club Makerspace - Event Coordinator, RC Rally",
+          title: "Build Club-MAKERSPACE | Event Coordinator-RC RALLY",
           date: "04/2025",
-          description: "Coordinated the RC Rally off-road racing event, managed logistics and track setup, and supported 50+ participants for a smooth competition."
+          description: "Coordinated the RC Rally off-road racing event, managing logistics, track setup, and supporting 50+ participants for a smooth and engaging competition."
         },
         {
-          title: "Office of International Affairs - Volunteer",
+          title: "Office of International Affairs | Volunteer",
           date: "08/2024",
-          description: "Recognized for outstanding dedication and commitment at \"Achievers Dialogues-2024\"."
+          description: "Recognition and appreciation for dedication and commitment at \"ACHIVERS DIALOGUES-2024\"."
         }
       ],
       languages: [
         { name: "Kannada", level: "Native / Bilingual" },
-        { name: "English", level: "Fluent" },
-        { name: "Hindi", level: "Basic" }
+        { name: "Hindi", level: "Basic" },
+        { name: "English", level: "Fluent" }
       ]
     },
     contact: {
-      eyebrow: "Contact",
-      title: "Open to analyst, PMO-support, and early-career opportunities.",
+      eyebrow: "CONTACT",
+      title: "DASHAMI S",
       description:
-        "If you are looking for someone who can support documentation, reporting, coordination, and reliable follow-through, I would be glad to connect.",
-      directNote: "Reach out for analyst, PMO-support, project coordination, or documentation-focused opportunities.",
+        "dashamishetty2004@gmail.com | 8971408959 | www.linkedin.com/in/dashamis5426 | github.com/Dashami-S-2004",
+      directNote: "Ready to work across available entry-level job profiles and assist teams with project tracking, report maintenance, process improvement, and on-time delivery.",
       email: "dashamishetty2004@gmail.com",
       phone: "8971408959",
-      location: "Bangalore, Karnataka",
+      location: "Banglore, Karnataka",
       linkedin: "https://www.linkedin.com/in/dashamis5426",
       github: "https://github.com/Dashami-S-2004",
       notes: [
         {
-          label: "Availability",
-          title: "Ready to contribute",
-          description: "Interested in analyst, PMO-support, project coordination, and early-career roles where structured execution matters."
+          label: "LinkedIn",
+          title: "dashamis5426",
+          description: "www.linkedin.com/in/dashamis5426"
         },
         {
-          label: "Profiles",
-          title: "Professional links",
-          description: "LinkedIn and GitHub are available for a fuller view of experience, projects, and technical work."
+          label: "GitHub",
+          title: "Dashami-S-2004",
+          description: "github.com/Dashami-S-2004"
         }
       ]
     }

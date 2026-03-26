@@ -62,14 +62,14 @@
           </article>
           <article class="panel detail-panel reveal-card accent-2">
             <em>Soft Skills</em>
-            <h3>Working Style</h3>
+            <h3>Soft Skills</h3>
             <div class="tag-cloud">
               ${softSkills}
             </div>
           </article>
           <article class="panel detail-panel reveal-card accent-3 full-span">
             <em>Technical Skills</em>
-            <h3>Tools and fundamentals</h3>
+            <h3>Technical Skills</h3>
             <div class="skill-group-grid">
               ${technicalGroups}
             </div>

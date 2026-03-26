@@ -32,8 +32,8 @@
         </div>
         <section class="section grid-2">
           <article class="contact-card reveal-card accent-1">
-            <em>Reach Out</em>
-            <h3>Direct contact</h3>
+            <em>Contact</em>
+            <h3>Dashami S</h3>
             <p>${escapeHTML(content.directNote || content.description || "")}</p>
             <div class="contact-stack">
               <a class="profile-link" href="mailto:${escapeHTML(content.email || "")}">${escapeHTML(content.email || "")}</a>
