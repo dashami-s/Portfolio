@@ -1,5 +1,8 @@
 (function () {
   const STORAGE_KEY = "dashami_portfolio_content_v9";
+  const PREFERRED_GITHUB_URL = "https://github.com/dashami-s";
+  const LEGACY_GITHUB_TEST_PATTERN = /(https?:\/\/)?(www\.)?github\.com\/dashami-s-2004\/?/i;
+  const LEGACY_GITHUB_REPLACE_PATTERN = /(https?:\/\/)?(www\.)?github\.com\/dashami-s-2004\/?/gi;
 
   const defaultContent = {
     landing: {
@@ -237,23 +240,23 @@
       eyebrow: "CONTACT",
       title: "DASHAMI S",
       description:
-        "dashamishetty2004@gmail.com | 8971408959 | www.linkedin.com/in/dashamis5426 | github.com/Dashami-S-2004",
+        "dashamishetty2004@gmail.com | 8971408959 | https://www.linkedin.com/in/dashamis5426 | https://github.com/dashami-s",
       directNote: "Ready to work across available entry-level job profiles and assist teams with project tracking, report maintenance, process improvement, and on-time delivery.",
       email: "dashamishetty2004@gmail.com",
       phone: "8971408959",
       location: "Banglore, Karnataka",
       linkedin: "https://www.linkedin.com/in/dashamis5426",
-      github: "https://github.com/Dashami-S-2004",
+      github: "https://github.com/dashami-s",
       notes: [
         {
           label: "LinkedIn",
           title: "dashamis5426",
-          description: "www.linkedin.com/in/dashamis5426"
+          description: "https://www.linkedin.com/in/dashamis5426"
         },
         {
           label: "GitHub",
-          title: "Dashami-S-2004",
-          description: "github.com/Dashami-S-2004"
+          title: "dashami-s",
+          description: "https://github.com/dashami-s"
         }
       ]
     }
@@ -288,27 +291,70 @@
     return result;
   }
 
+  function normalizeGithubLinks(content) {
+    const next = clone(content || {});
+    if (!next.contact) {
+      return next;
+    }
+
+    const contact = next.contact;
+    const githubValue = String(contact.github || "").trim();
+    const hasPreferredGithub = githubValue.toLowerCase() === PREFERRED_GITHUB_URL.toLowerCase();
+
+    if (!githubValue || LEGACY_GITHUB_TEST_PATTERN.test(githubValue)) {
+      contact.github = PREFERRED_GITHUB_URL;
+    } else if (!hasPreferredGithub) {
+      contact.github = githubValue;
+    }
+
+    if (typeof contact.description === "string") {
+      contact.description = contact.description.replace(LEGACY_GITHUB_REPLACE_PATTERN, PREFERRED_GITHUB_URL);
+    }
+
+    if (Array.isArray(contact.notes)) {
+      contact.notes = contact.notes.map((note) => {
+        const normalizedNote = { ...note };
+
+        if (typeof normalizedNote.description === "string") {
+          normalizedNote.description = normalizedNote.description.replace(LEGACY_GITHUB_REPLACE_PATTERN, PREFERRED_GITHUB_URL);
+        }
+
+        if (String(normalizedNote.label || "").toLowerCase() === "github") {
+          normalizedNote.title = "dashami-s";
+          if (!normalizedNote.description) {
+            normalizedNote.description = PREFERRED_GITHUB_URL;
+          }
+        }
+
+        return normalizedNote;
+      });
+    }
+
+    return next;
+  }
+
   function getContent() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) {
-        return clone(defaultContent);
+        return normalizeGithubLinks(defaultContent);
       }
-      return mergeDefaults(defaultContent, JSON.parse(raw));
+      return normalizeGithubLinks(mergeDefaults(defaultContent, JSON.parse(raw)));
     } catch (error) {
       console.warn("Falling back to default content.", error);
-      return clone(defaultContent);
+      return normalizeGithubLinks(defaultContent);
     }
   }
 
   function saveContent(content) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
-    return content;
+    const normalized = normalizeGithubLinks(content);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
+    return normalized;
   }
 
   function resetContent() {
     localStorage.removeItem(STORAGE_KEY);
-    return clone(defaultContent);
+    return normalizeGithubLinks(defaultContent);
   }
 
   window.SiteData = {

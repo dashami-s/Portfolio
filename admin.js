@@ -517,6 +517,7 @@
     $("contact-description-input").value = content.contact.description;
     $("contact-email-input").value = content.contact.email;
     $("contact-linkedin-input").value = content.contact.linkedin;
+    $("contact-github-input").value = content.contact.github;
   }
 
   function bindSimpleFields() {
@@ -548,6 +549,7 @@
     bind("contact-description-input", (value) => (content.contact.description = value));
     bind("contact-email-input", (value) => (content.contact.email = value));
     bind("contact-linkedin-input", (value) => (content.contact.linkedin = value));
+    bind("contact-github-input", (value) => (content.contact.github = value));
   }
 
   function renderLists() {
