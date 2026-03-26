@@ -11,9 +11,20 @@
 
   let content;
   let imageSettings;
+  let currentPreviewMode = "landing";
+  let previewQueued = false;
 
   function status(message) {
     $("admin-status").textContent = message;
+  }
+
+  function escapeHTML(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   function getImageSettings() {
@@ -70,6 +81,187 @@
         `
       )
       .join("");
+  }
+
+  function renderStatGrid(items) {
+    return (items || [])
+      .map(
+        (item) => `
+          <div class="mini-stat">
+            <strong>${escapeHTML(item.value)}</strong>
+            <span>${escapeHTML(item.label)}</span>
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  function renderLandingPreview() {
+    const landing = content.landing;
+    const profilePanel = landing.profilePanel || {};
+    const contactPanel = landing.contactPanel || {};
+    const profileLines = (profilePanel.lines || [])
+      .map((item) => `<li>${escapeHTML(item)}</li>`)
+      .join("");
+    const chips = (landing.chips || [])
+      .map((item) => `<div class="orbit-chip">${escapeHTML(item)}</div>`)
+      .join("");
+    return `
+      <div class="preview-site preview-site-landing">
+        <div class="page-shell preview-page-shell">
+          <header class="topbar preview-topbar">
+            <div class="brand">
+              <div class="brand-mark">DS</div>
+              <div class="brand-copy">
+                <strong>Dashami S</strong>
+                <span>Analyst / PMO Support</span>
+              </div>
+            </div>
+            <div class="topbar-actions">
+              <nav class="nav" aria-label="Preview navigation">
+                <a class="active" href="#">Home</a>
+                <a href="#">Portfolio</a>
+              </nav>
+            </div>
+          </header>
+          <main>
+            <section class="hero">
+              <div class="hero-copy">
+                <span class="eyebrow">${escapeHTML(landing.eyebrow)}</span>
+                <h1>${escapeHTML(landing.title)}</h1>
+                <p>${escapeHTML(landing.description)}</p>
+                <div class="button-row">
+                  <a class="button primary" href="#">${escapeHTML(landing.primaryLabel)}</a>
+                  <a class="button secondary" href="#">${escapeHTML(landing.secondaryLabel)}</a>
+                </div>
+                <div class="mini-stat-grid">${renderStatGrid(landing.stats)}</div>
+              </div>
+              <aside class="hero-side">
+                <section class="panel">
+                  <div class="panel-title">
+                    <h3>${escapeHTML(profilePanel.title)}</h3>
+                    <span class="muted">${escapeHTML(profilePanel.meta)}</span>
+                  </div>
+                  <ul class="list-clean">${profileLines}</ul>
+                </section>
+                <section class="panel">
+                  <div class="panel-title">
+                    <h3>${escapeHTML(contactPanel.title)}</h3>
+                    <span class="muted">${escapeHTML(contactPanel.meta)}</span>
+                  </div>
+                  <p>${escapeHTML(contactPanel.description)}</p>
+                </section>
+              </aside>
+              <div class="hero-orbit" aria-hidden="true">${chips}</div>
+            </section>
+            <section class="section grid-3">
+              ${(landing.highlights || [])
+                .map(
+                  (item, index) => `
+                    <article class="view-card reveal-card accent-${(index % 3) + 1}">
+                      <div>
+                        <em>${escapeHTML(item.label)}</em>
+                        <h3>${escapeHTML(item.title)}</h3>
+                        <p>${escapeHTML(item.description)}</p>
+                      </div>
+                      <a class="card-link" href="#">${escapeHTML(item.cta)}</a>
+                    </article>
+                  `
+                )
+                .join("")}
+            </section>
+            <section class="moving-line" aria-hidden="true">
+              <div class="moving-line-track">
+                <span class="moving-pill">Python</span>
+                <span class="moving-pill">Power BI</span>
+                <span class="moving-pill">Project coordination</span>
+                <span class="moving-pill">Documentation</span>
+                <span class="moving-pill">Cross-functional collaboration</span>
+                <span class="moving-pill">Python</span>
+                <span class="moving-pill">Power BI</span>
+                <span class="moving-pill">Project coordination</span>
+                <span class="moving-pill">Documentation</span>
+                <span class="moving-pill">Cross-functional collaboration</span>
+              </div>
+            </section>
+          </main>
+          <footer class="footer">Dashami S portfolio focused on coordination, reporting, and delivery support.</footer>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderPortfolioPreview() {
+    const sections = [
+      window.SiteSections.landing(content.landing),
+      window.SiteSections.about(content.about),
+      window.SiteSections.experience(content.experience),
+      window.SiteSections.work(content.work),
+      window.SiteSections.recognition(content.recognition),
+      window.SiteSections.contact(content.contact)
+    ].join("");
+
+    return `
+      <div class="preview-site preview-site-portfolio portfolio-page">
+        <div class="page-shell preview-page-shell">
+          <header class="topbar preview-topbar">
+            <div class="brand">
+              <div class="brand-mark">DS</div>
+              <div class="brand-copy">
+                <strong>Dashami S</strong>
+                <span>Analyst / PMO Support</span>
+              </div>
+            </div>
+            <div class="topbar-actions">
+              <nav class="nav" aria-label="Preview navigation">
+                <a href="#">Home</a>
+                <a class="active" href="#">Portfolio</a>
+                <a href="#">Intro</a>
+                <a href="#">About</a>
+                <a href="#">Skills</a>
+                <a href="#">Experience</a>
+                <a href="#">Projects</a>
+                <a href="#">Recognition</a>
+                <a href="#">Contact</a>
+              </nav>
+            </div>
+          </header>
+          <main>
+            <div class="section-stack">
+              ${sections}
+            </div>
+          </main>
+          <footer class="footer">Portfolio of Dashami S featuring objective, skills, experience, projects, and achievements.</footer>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderPreview() {
+    const canvas = $("admin-preview-canvas");
+    if (!canvas || !window.SiteSections) {
+      return;
+    }
+
+    canvas.innerHTML = currentPreviewMode === "portfolio"
+      ? renderPortfolioPreview()
+      : renderLandingPreview();
+
+    document.querySelectorAll("[data-preview-mode]").forEach(function (button) {
+      button.classList.toggle("active", button.getAttribute("data-preview-mode") === currentPreviewMode);
+    });
+  }
+
+  function queuePreviewRender() {
+    if (previewQueued) {
+      return;
+    }
+
+    previewQueued = true;
+    requestAnimationFrame(function () {
+      previewQueued = false;
+      renderPreview();
+    });
   }
 
   function syncImageSettingsUI() {
@@ -177,6 +369,7 @@
     input.value = value || "";
     input.addEventListener("input", function () {
       onInput(input.value);
+      queuePreviewRender();
     });
 
     field.append(label, input);
@@ -281,7 +474,7 @@
             const meta = document.createElement("p");
             meta.className = "admin-note";
             meta.textContent =
-              `${item.imageMeta.width}x${item.imageMeta.height} • ${item.imageMeta.format.replace("image/", "").toUpperCase()} • ${formatBytes(item.imageMeta.outputSize)}`;
+              `${item.imageMeta.width}x${item.imageMeta.height} - ${item.imageMeta.format.replace("image/", "").toUpperCase()} - ${formatBytes(item.imageMeta.outputSize)}`;
             editor.append(meta);
           }
 
@@ -327,27 +520,34 @@
   }
 
   function bindSimpleFields() {
-    $("landing-eyebrow-input").addEventListener("input", (e) => (content.landing.eyebrow = e.target.value));
-    $("landing-title-input").addEventListener("input", (e) => (content.landing.title = e.target.value));
-    $("landing-description-input").addEventListener("input", (e) => (content.landing.description = e.target.value));
-    $("landing-primary-label-input").addEventListener("input", (e) => (content.landing.primaryLabel = e.target.value));
-    $("landing-primary-href-input").addEventListener("input", (e) => (content.landing.primaryHref = e.target.value));
-    $("landing-secondary-label-input").addEventListener("input", (e) => (content.landing.secondaryLabel = e.target.value));
-    $("landing-secondary-href-input").addEventListener("input", (e) => (content.landing.secondaryHref = e.target.value));
+    function bind(id, setter) {
+      $(id).addEventListener("input", function (e) {
+        setter(e.target.value);
+        queuePreviewRender();
+      });
+    }
 
-    $("about-eyebrow-input").addEventListener("input", (e) => (content.about.eyebrow = e.target.value));
-    $("about-title-input").addEventListener("input", (e) => (content.about.title = e.target.value));
-    $("about-description-input").addEventListener("input", (e) => (content.about.description = e.target.value));
+    bind("landing-eyebrow-input", (value) => (content.landing.eyebrow = value));
+    bind("landing-title-input", (value) => (content.landing.title = value));
+    bind("landing-description-input", (value) => (content.landing.description = value));
+    bind("landing-primary-label-input", (value) => (content.landing.primaryLabel = value));
+    bind("landing-primary-href-input", (value) => (content.landing.primaryHref = value));
+    bind("landing-secondary-label-input", (value) => (content.landing.secondaryLabel = value));
+    bind("landing-secondary-href-input", (value) => (content.landing.secondaryHref = value));
 
-    $("work-eyebrow-input").addEventListener("input", (e) => (content.work.eyebrow = e.target.value));
-    $("work-title-input").addEventListener("input", (e) => (content.work.title = e.target.value));
-    $("work-description-input").addEventListener("input", (e) => (content.work.description = e.target.value));
+    bind("about-eyebrow-input", (value) => (content.about.eyebrow = value));
+    bind("about-title-input", (value) => (content.about.title = value));
+    bind("about-description-input", (value) => (content.about.description = value));
 
-    $("contact-eyebrow-input").addEventListener("input", (e) => (content.contact.eyebrow = e.target.value));
-    $("contact-title-input").addEventListener("input", (e) => (content.contact.title = e.target.value));
-    $("contact-description-input").addEventListener("input", (e) => (content.contact.description = e.target.value));
-    $("contact-email-input").addEventListener("input", (e) => (content.contact.email = e.target.value));
-    $("contact-linkedin-input").addEventListener("input", (e) => (content.contact.linkedin = e.target.value));
+    bind("work-eyebrow-input", (value) => (content.work.eyebrow = value));
+    bind("work-title-input", (value) => (content.work.title = value));
+    bind("work-description-input", (value) => (content.work.description = value));
+
+    bind("contact-eyebrow-input", (value) => (content.contact.eyebrow = value));
+    bind("contact-title-input", (value) => (content.contact.title = value));
+    bind("contact-description-input", (value) => (content.contact.description = value));
+    bind("contact-email-input", (value) => (content.contact.email = value));
+    bind("contact-linkedin-input", (value) => (content.contact.linkedin = value));
   }
 
   function renderLists() {
@@ -383,6 +583,7 @@
     });
 
     updateAdminStats();
+    queuePreviewRender();
   }
 
   function loadData() {
@@ -391,6 +592,7 @@
     fillSimpleFields();
     syncImageSettingsUI();
     renderLists();
+    renderPreview();
     status("Loaded current saved content.");
   }
 
@@ -403,16 +605,23 @@
     bindSimpleFields();
     bindImageSettings();
 
+    document.querySelectorAll("[data-preview-mode]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        currentPreviewMode = button.getAttribute("data-preview-mode");
+        renderPreview();
+      });
+    });
+
     $("add-gallery-item").addEventListener("click", function () {
       content.work.gallery.push({
-        label: `Case ${String(content.work.gallery.length + 1).padStart(2, "0")}`,
-        title: "New Gallery Item",
-        description: "Write a short explanation here.",
+        label: "",
+        title: "",
+        description: "",
         image: "",
         imageMeta: null
       });
       renderLists();
-      status("New gallery item added.");
+      status("New project entry added. Fill in the real date, title, and description.");
     });
 
     $("save-all").addEventListener("click", function () {

@@ -34,7 +34,7 @@
           <article class="contact-card reveal-card accent-1">
             <em>Reach Out</em>
             <h3>Direct contact</h3>
-            <p>Available for internships, analyst roles, PMO-support opportunities, and collaborative early-career work.</p>
+            <p>${escapeHTML(content.directNote || content.description || "")}</p>
             <div class="contact-stack">
               <a class="profile-link" href="mailto:${escapeHTML(content.email || "")}">${escapeHTML(content.email || "")}</a>
               <a class="profile-link" href="tel:${escapeHTML(content.phone || "")}">${escapeHTML(content.phone || "")}</a>

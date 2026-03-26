@@ -47,6 +47,11 @@
     setHref("landing-primary-link", content.primaryHref);
     setText("landing-secondary-label", content.secondaryLabel);
     setHref("landing-secondary-link", content.secondaryHref);
+    setText("landing-profile-title", content.profilePanel ? content.profilePanel.title : "");
+    setText("landing-profile-meta", content.profilePanel ? content.profilePanel.meta : "");
+    setText("landing-contact-title", content.contactPanel ? content.contactPanel.title : "");
+    setText("landing-contact-meta", content.contactPanel ? content.contactPanel.meta : "");
+    setText("landing-contact-description", content.contactPanel ? content.contactPanel.description : "");
 
     const stats = (content.stats || [])
       .map(
@@ -70,13 +75,23 @@
               <h3>${escapeHTML(item.title)}</h3>
               <p>${escapeHTML(item.description)}</p>
             </div>
-            <a class="card-link" href="${escapeHTML(item.href || "#")}">${escapeHTML(item.cta || "Open")}</a>
+            <a class="card-link" href="${escapeHTML(item.href || "#")}">${escapeHTML(item.cta || "View")}</a>
           </article>
         `
       )
       .join("");
 
     setHTML("landing-highlights", cards);
+
+    const profileLines = ((content.profilePanel && content.profilePanel.lines) || [])
+      .map((item) => `<li>${escapeHTML(item)}</li>`)
+      .join("");
+    setHTML("landing-profile-list", profileLines);
+
+    const chips = (content.chips || [])
+      .map((item) => `<div class="orbit-chip">${escapeHTML(item)}</div>`)
+      .join("");
+    setHTML("landing-hero-orbit", chips);
   }
 
   function renderAbout(content) {
@@ -171,8 +186,6 @@
     if (page === "contact") {
       renderContact(content.contact);
     }
-
-    setText("year-stamp", new Date().getFullYear());
     const pulse = document.querySelector("[data-live-pulse]");
     if (pulse) {
       setAttrs(pulse.id, { "aria-label": "Live site status" });

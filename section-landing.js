@@ -11,6 +11,14 @@
   }
 
   window.SiteSections.landing = function (content) {
+    const profilePanel = content.profilePanel || {};
+    const contactPanel = content.contactPanel || {};
+    const profileLines = (profilePanel.lines || [])
+      .map((item) => `<li>${escapeHTML(item)}</li>`)
+      .join("");
+    const chips = (content.chips || [])
+      .map((item) => `<div class="orbit-chip">${escapeHTML(item)}</div>`)
+      .join("");
     const stats = (content.stats || [])
       .map(
         (item) => `
@@ -31,7 +39,7 @@
               <h3>${escapeHTML(item.title)}</h3>
               <p>${escapeHTML(item.description)}</p>
             </div>
-            <a class="card-link" href="${escapeHTML(item.href || "#")}">${escapeHTML(item.cta || "Open")}</a>
+            <a class="card-link" href="${escapeHTML(item.href || "#")}">${escapeHTML(item.cta || "View")}</a>
           </article>
         `
       )
@@ -54,31 +62,23 @@
           <aside class="hero-side">
             <section class="panel">
               <div class="panel-title">
-                <h3>Profile Snapshot</h3>
-                <span class="muted">career focus</span>
+                <h3>${escapeHTML(profilePanel.title)}</h3>
+                <span class="muted">${escapeHTML(profilePanel.meta)}</span>
               </div>
               <ul class="list-clean">
-                <li>Computer Science Engineering graduate</li>
-                <li>Interested in analyst and PMO-support roles</li>
-                <li>Focused on reporting, coordination, and follow-through</li>
+                ${profileLines}
               </ul>
             </section>
 
             <section class="panel">
               <div class="panel-title">
-                <h3>What Stands Out</h3>
-                <span class="muted">${new Date().getFullYear()}</span>
+                <h3>${escapeHTML(contactPanel.title)}</h3>
+                <span class="muted">${escapeHTML(contactPanel.meta)}</span>
               </div>
-              <p>
-                Academic projects, event coordination, and documentation-heavy responsibilities have shaped a practical, delivery-focused working style.
-              </p>
+              <p>${escapeHTML(contactPanel.description)}</p>
             </section>
           </aside>
-          <div class="hero-orbit" aria-hidden="true">
-            <div class="orbit-chip">reporting</div>
-            <div class="orbit-chip">coordination</div>
-            <div class="orbit-chip">delivery support</div>
-          </div>
+          <div class="hero-orbit" aria-hidden="true">${chips}</div>
         </section>
 
         <section class="section grid-3">

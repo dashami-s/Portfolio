@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#16584e">
   <title>Dashami S | Portfolio</title>
-  <meta name="description" content="A merged one-page portfolio assembled from separate section files.">
+  <meta name="description" content="Portfolio of Dashami S featuring career objective, skills, experience, projects, achievements, and contact details.">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="portfolio-page">
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-bar" data-scroll-progress></div>
+  </div>
   <div class="page-shell">
     <header class="topbar">
       <a class="brand" href="landingpage.html">
         <div class="brand-mark">DS</div>
         <div class="brand-copy">
           <strong>Dashami S</strong>
-          <span>Creative portfolio</span>
+          <span>Analyst / PMO Support</span>
         </div>
       </a>
       <div class="topbar-actions">
-        <nav class="nav" aria-label="Primary">
+        <nav class="nav" aria-label="Primary" data-portfolio-nav>
           <a href="landingpage.html">Home</a>
           <a class="active" href="portfolio.html">Portfolio</a>
           <a href="#landing">Intro</a>
@@ -29,6 +33,7 @@
           <a href="#recognition">Recognition</a>
           <a href="#contact">Contact</a>
         </nav>
+        <button class="theme-style-toggle" type="button" data-theme-style-toggle>Style: Sage</button>
         <button class="theme-toggle" type="button" data-theme-toggle>Dark Mode</button>
       </div>
     </header>
@@ -37,7 +42,7 @@
       <div id="merged-sections" class="section-stack"></div>
     </main>
 
-    <footer class="footer">A single-page portfolio assembled from separate section files.</footer>
+    <footer class="footer">Portfolio of Dashami S featuring objective, skills, experience, projects, and achievements.</footer>
   </div>
   <script src="theme.js"></script>
   <script src="site-data.js"></script>
@@ -48,5 +53,6 @@
   <script src="section-recognition.js"></script>
   <script src="section-contact.js"></script>
   <script src="merged-page.js"></script>
+  <script src="portfolio-scroll.js"></script>
 </body>
 </html>

@@ -1,16 +1,31 @@
 (function () {
-  const STORAGE_KEY = "dashami_portfolio_content_v4";
+  const STORAGE_KEY = "dashami_portfolio_content_v6";
 
   const defaultContent = {
     landing: {
       eyebrow: "Dashami S",
-      title: "Analyst-minded. Detail-driven. Ready to support delivery.",
+      title: "Detail-oriented support for project coordination and reporting.",
       description:
         "Computer Science Engineering graduate with experience in project coordination, documentation, reporting, and team collaboration through academic and organizational work.",
       primaryLabel: "View Portfolio",
       primaryHref: "portfolio.html#about",
       secondaryLabel: "See Projects",
       secondaryHref: "portfolio.html#projects",
+      profilePanel: {
+        title: "Profile Summary",
+        meta: "Education and focus",
+        lines: [
+          "B.Tech in Computer Science and Engineering",
+          "Presidency University, Bengaluru",
+          "Interested in Analyst / PMO-support roles"
+        ]
+      },
+      contactPanel: {
+        title: "Location and contact",
+        meta: "Bengaluru, Karnataka",
+        description: "Email: dashamishetty2004@gmail.com | Phone: 8971408959"
+      },
+      chips: ["Power BI", "Documentation", "Project coordination"],
       stats: [
         { value: "Top 10", label: "Inventra'25 Capstone shortlist" },
         { value: "50+", label: "Participants supported in RC Rally" },
@@ -84,7 +99,7 @@
         },
         {
           label: "Data Analysis and Reporting",
-          items: ["NumPy", "Pandas", "Power BI", "Excel-based analysis"]
+          items: ["Python (NumPy, Pandas)", "Power BI", "Excel-based analysis"]
         },
         {
           label: "Web and Application Fundamentals",
@@ -143,11 +158,12 @@
         {
           label: "07/2025 - Present",
           title: "AI-Powered Autonomous Security RoboDog",
-          description: "Planned project activities, coordinated task execution, and maintained documentation and progress updates throughout the capstone build.",
+          description: "Capstone project focused on AI-powered autonomous security with structured execution and documentation.",
           image: "",
           bullets: [
-            "Delivered a working prototype shortlisted in the Top 10 projects.",
-            "Hardware project with face detection integration for AI-powered autonomous security."
+            "Planned project activities and coordinated task execution.",
+            "Maintained documentation and progress updates.",
+            "Delivered a working prototype, shortlisted in the Top 10 projects."
           ]
         },
         {
@@ -166,18 +182,8 @@
           description: "Worked with accessibility-focused user needs, documented workflows, and supported structured feature delivery.",
           image: "",
           bullets: [
-            "Analyzed user needs with a focus on accessibility.",
+            "Analyzed user needs with focus on accessibility.",
             "Documented workflows and supported feature delivery."
-          ]
-        },
-        {
-          label: "03/06/2024",
-          title: "Healthcare Detection Websites",
-          description: "Developed one website for brain haemorrhage detection and another for detecting different stages of lung diseases.",
-          image: "",
-          bullets: [
-            "Presented at Student Project Expo 2024.",
-            "Ranked in the Top 26 projects out of 450 entries."
           ]
         }
       ]
@@ -198,17 +204,17 @@
         {
           title: "Inventra'25 - Capstone Project Expo",
           date: "27/11/2025",
-          description: "Represented the RoboDog project and reached the Top 10 with an AI-powered autonomous security robot integrating face detection."
+          description: "Represented the RoboDog project and got into the Top 10 projects. Hardware project with integration of face detection as an AI-powered autonomous security robot."
         },
         {
           title: "IoT and Robotics - VAC Certification",
           date: "07/07/2025",
-          description: "Completed an IoT and Robotics certification with hands-on work in sensors, automation, and prototypes like an object-detecting car and RoboDog."
+          description: "Completed an IoT and Robotics certification, gaining hands-on experience with sensors, automation, and building prototypes like an object-detecting car and RoboDog."
         },
         {
           title: "Student Project Expo 2024",
           date: "03/06/2024",
-          description: "Placed in the Top 26 projects out of 450 with healthcare detection websites."
+          description: "Top 26th project out of 450 projects. Developed two websites, one for brain haemorrhage and another for detecting different stages of lung diseases."
         }
       ],
       organizations: [
@@ -220,7 +226,7 @@
         {
           title: "Office of International Affairs - Volunteer",
           date: "08/2024",
-          description: "Recognized for dedication and commitment during Achivers Dialogues-2024."
+          description: "Recognized for outstanding dedication and commitment at \"Achievers Dialogues-2024\"."
         }
       ],
       languages: [
@@ -234,6 +240,7 @@
       title: "Open to analyst, PMO-support, and early-career opportunities.",
       description:
         "If you are looking for someone who can support documentation, reporting, coordination, and reliable follow-through, I would be glad to connect.",
+      directNote: "Reach out for analyst, PMO-support, project coordination, or documentation-focused opportunities.",
       email: "dashamishetty2004@gmail.com",
       phone: "8971408959",
       location: "Bangalore, Karnataka",
