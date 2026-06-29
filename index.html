@@ -1,58 +1,359 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#16584e">
-  <title>Dashami S | Portfolio</title>
-  <meta name="description" content="Portfolio of Dashami S featuring career objective, skills, experience, projects, achievements, and contact details.">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-<body class="portfolio-page">
-  <div class="scroll-progress" aria-hidden="true">
-    <div class="scroll-progress-bar" data-scroll-progress></div>
-  </div>
-  <div class="page-shell">
-    <header class="topbar">
-      <a class="brand" href="landingpage.html">
-        <div class="brand-mark">DS</div>
-        <div class="brand-copy">
-          <strong>Dashami S</strong>
-          <span>B.Tech CSE Student</span>
-        </div>
-      </a>
-      <div class="topbar-actions">
-        <nav class="nav" aria-label="Primary" data-portfolio-nav>
-          <a href="landingpage.html">Home</a>
-          <a class="active" href="portfolio.html">Portfolio</a>
-          <a href="#landing">Intro</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#recognition">Recognition</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <button class="theme-style-toggle" type="button" data-theme-style-toggle>Style: Sage</button>
-        <button class="theme-toggle" type="button" data-theme-toggle>Dark Mode</button>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300..900;9..144,1,300..900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  *{box-sizing:border-box}
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+  @keyframes marqueeX { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @keyframes riseIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes blobMorph { 0%,100%{border-radius:42% 58% 63% 37%/42% 38% 62% 58%} 50%{border-radius:58% 42% 38% 63%/63% 58% 42% 37%} }
+  @keyframes pulseDot { 0%{box-shadow:0 0 0 0 rgba(200,255,90,.7)} 70%{box-shadow:0 0 0 10px rgba(200,255,90,0)} 100%{box-shadow:0 0 0 0 rgba(200,255,90,0)} }
+  @keyframes spin3d { from{transform:rotateX(-22deg) rotateY(0deg)} to{transform:rotateX(-22deg) rotateY(360deg)} }
+  @keyframes spinRing { from{transform:rotateY(0) rotateX(72deg)} to{transform:rotateY(360deg) rotateX(72deg)} }
+  .scene3d{perspective:900px;transition:transform .25s ease-out}
+  .cube3d{position:relative;width:160px;height:160px;transform-style:preserve-3d;animation:spin3d 16s linear infinite}
+  .cube3d > i{position:absolute;inset:0;border:1.5px solid rgba(200,255,90,.55);background:rgba(200,255,90,.04);box-shadow:inset 0 0 40px rgba(200,255,90,.12)}
+  .cube3d > i:nth-child(1){transform:translateZ(80px)}
+  .cube3d > i:nth-child(2){transform:rotateY(180deg) translateZ(80px)}
+  .cube3d > i:nth-child(3){transform:rotateY(90deg) translateZ(80px);border-color:rgba(255,138,92,.55)}
+  .cube3d > i:nth-child(4){transform:rotateY(-90deg) translateZ(80px);border-color:rgba(255,138,92,.55)}
+  .cube3d > i:nth-child(5){transform:rotateX(90deg) translateZ(80px)}
+  .cube3d > i:nth-child(6){transform:rotateX(-90deg) translateZ(80px)}
+  .cube3d .core{position:absolute;inset:46px;border:none;background:radial-gradient(circle,#c8ff5a,#5fb98a);box-shadow:0 0 60px rgba(200,255,90,.6);transform:translateZ(0);animation:floatY 5s ease-in-out infinite}
+  .ring3d{position:absolute;width:300px;height:300px;left:50%;top:50%;margin:-150px;border:1.5px dashed rgba(255,138,92,.4);border-radius:50%;transform-style:preserve-3d;animation:spinRing 12s linear infinite}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .card-lift{transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s,background .3s}
+  .card-lift:hover{transform:translateY(-6px)}
+  a.nav-l{position:relative}
+  a.nav-l::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:#c8ff5a;transition:width .25s}
+  a.nav-l:hover::after{width:100%}
+</style>
+</helmet>
+<div style="background:#0e1411;color:#f3efe6;font-family:'Space Grotesk',sans-serif;position:relative;overflow:hidden">
+
+  <!-- ===== HERO ===== -->
+  <section style="position:relative;min-height:100vh;padding-bottom:0">
+    <div style="position:absolute;top:-180px;right:-120px;width:520px;height:520px;background:radial-gradient(circle at 30% 30%,#c8ff5a,#5fb98a 60%,transparent 72%);filter:blur(8px);opacity:0.5;animation:blobMorph 14s ease-in-out infinite,floatY 9s ease-in-out infinite"></div>
+    <div style="position:absolute;bottom:-160px;left:-100px;width:420px;height:420px;background:radial-gradient(circle at 40% 40%,#ff8a5c,#a13d6e 65%,transparent 75%);filter:blur(10px);opacity:0.35;animation:blobMorph 18s ease-in-out infinite reverse"></div>
+
+    <div style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:34px 48px 0;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#c8ff5a;color:#0e1411;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;letter-spacing:0.5px">DS</div>
+        <div style="line-height:1.2"><strong style="font-size:15px">Dashami S</strong><br><span style="font-size:12px;color:#9fb0a4">B.Tech CSE</span></div>
       </div>
-    </header>
+      <nav style="display:flex;gap:26px;font-size:13px;color:#bfcabf;letter-spacing:0.3px">
+        <a class="nav-l" href="#about" style="color:inherit;text-decoration:none">About</a>
+        <a class="nav-l" href="#experience" style="color:inherit;text-decoration:none">Experience</a>
+        <a class="nav-l" href="#work" style="color:inherit;text-decoration:none">Work</a>
+        <a class="nav-l" href="#recognition" style="color:inherit;text-decoration:none">Recognition</a>
+        <a class="nav-l" href="#contact" style="color:inherit;text-decoration:none">Contact</a>
+      </nav>
+    </div>
 
-    <main>
-      <div id="merged-sections" class="section-stack"></div>
-    </main>
+    <div data-progress style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#c8ff5a,#ff8a5c);z-index:50;box-shadow:0 0 14px rgba(200,255,90,.6)"></div>
+    <div style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:70px 48px 0">
+      <div style="display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:1px;color:#c8ff5a;background:rgba(200,255,90,.08);border:1px solid rgba(200,255,90,.3);padding:8px 16px;border-radius:30px;animation:riseIn 0.6s ease both">
+        <span style="width:8px;height:8px;border-radius:50%;background:#c8ff5a;box-shadow:0 0 0 0 rgba(200,255,90,.7);animation:pulseDot 2s infinite"></span>OPEN TO ENTRY-LEVEL ROLES · AVAILABLE IMMEDIATELY
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;color:#8fa093;margin-top:18px;animation:riseIn 0.7s ease both">
+        <span style="width:36px;height:1px;background:#3a463e;display:inline-block"></span>DASHAMI&nbsp;S — FRESHER · B.TECH CSE · 2026
+      </div>
+      <h1 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(52px,9vw,128px);line-height:0.92;letter-spacing:-0.02em;margin:22px 0 0;animation:riseIn 0.8s ease both;animation-delay:0.05s">
+        Building things<br>that <em style="font-style:italic;color:#c8ff5a">coordinate,</em><br>ship &amp; <span style="position:relative;white-space:nowrap">last<span style="position:absolute;left:0;bottom:6px;width:100%;height:10px;background:#ff8a5c;opacity:0.55;z-index:-1;border-radius:4px"></span></span>.
+      </h1>
+      <p style="max-width:560px;font-size:17px;line-height:1.6;color:#c3cdc4;margin:30px 0 0;animation:riseIn 0.9s ease both;animation-delay:0.15s">
+        Detail-oriented Computer Science &amp; Engineering student at Presidency University — project coordination, documentation and team delivery, ready for entry-level roles.
+      </p>
+      <div style="display:flex;gap:16px;margin-top:38px;animation:riseIn 1s ease both;animation-delay:0.25s">
+        <a href="#work" style="background:#c8ff5a;color:#0e1411;padding:15px 28px;border-radius:40px;font-weight:600;font-size:14px;text-decoration:none;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px -10px #c8ff5a">View Portfolio →</a>
+        <a href="#contact" style="border:1px solid #3a463e;color:#f3efe6;padding:15px 28px;border-radius:40px;font-weight:500;font-size:14px;text-decoration:none;transition:border-color .2s" style-hover="border-color:#c8ff5a">Get in touch</a>
+      </div>
 
-    <footer class="footer">Portfolio of Dashami S featuring objective, skills, experience, projects, and achievements.</footer>
-  </div>
-  <script src="theme.js"></script>
-  <script src="site-data.js"></script>
-  <script src="section-landing.js"></script>
-  <script src="section-about.js"></script>
-  <script src="section-experience.js"></script>
-  <script src="section-work.js"></script>
-  <script src="section-recognition.js"></script>
-  <script src="section-contact.js"></script>
-  <script src="merged-page.js"></script>
-  <script src="portfolio-scroll.js"></script>
+      <div style="display:flex;flex-wrap:wrap;gap:48px;margin-top:64px;animation:riseIn 1.1s ease both;animation-delay:0.35s">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+          <div>
+            <div style="font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:#f3efe6">{{ s.value }}</div>
+            <div style="font-size:12px;color:#8fa093;max-width:150px;margin-top:4px;line-height:1.4">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="position:relative;z-index:2;margin-top:70px;border-top:1px solid #232c26;border-bottom:1px solid #232c26;padding:18px 0;overflow:hidden;white-space:nowrap">
+      <div style="display:inline-flex;gap:40px;animation:marqueeX 22s linear infinite;font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:#5d6b60">
+        <span>Python</span><span>•</span><span>Power BI</span><span>•</span><span>Java</span><span>•</span><span>MySQL</span><span>•</span><span>Project Coordination</span><span>•</span><span>Robotics</span><span>•</span><span>Python</span><span>•</span><span>Power BI</span><span>•</span><span>Java</span><span>•</span><span>MySQL</span><span>•</span><span>Project Coordination</span><span>•</span><span>Robotics</span><span>•</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 48px 0">
+    <div class="reveal" style="display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;color:#c8ff5a">
+      <span style="width:36px;height:1px;background:#c8ff5a"></span>CAREER OBJECTIVE
+    </div>
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;margin-top:30px;align-items:start" data-cols>
+      <div>
+        <h2 class="reveal" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,4.5vw,56px);line-height:1.05;letter-spacing:-0.02em;margin:0">
+          Detail-oriented engineering graduate, built for <em style="font-style:italic;color:#c8ff5a">delivery.</em>
+        </h2>
+        <p class="reveal" style="font-size:16px;line-height:1.7;color:#bcc6bd;margin:28px 0 0;max-width:560px">
+          Experience in project coordination, documentation and team collaboration through academic and organizational projects. Ready to assist teams in tracking project progress, maintenance of reports, support to process improvement and on-time delivery while learning industry best practices.
+        </p>
+        <div class="reveal" style="margin-top:36px;padding:24px;border:1px solid #283129;border-radius:18px;background:#131b16">
+          <div style="font-size:11px;letter-spacing:2px;color:#8fa093">EDUCATION</div>
+          <div style="font-family:'Fraunces',serif;font-size:22px;margin-top:8px">B.Tech — Computer Science &amp; Engineering</div>
+          <div style="font-size:14px;color:#a9b4aa;margin-top:6px">Presidency University · Bengaluru, India · 08/2022 – Present</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ aboutCards }}" as="c" hint-placeholder-count="3">
+          <div class="reveal card-lift" style="padding:22px;border:1px solid #283129;border-radius:16px;background:#131b16" style-hover="border-color:#c8ff5a;background:#16201a">
+            <div style="font-size:11px;letter-spacing:2px;color:#c8ff5a">{{ c.label }}</div>
+            <div style="font-family:'Fraunces',serif;font-size:19px;margin-top:8px">{{ c.title }}</div>
+            <div style="font-size:13.5px;color:#a3aea4;margin-top:8px;line-height:1.55">{{ c.description }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- skills -->
+    <div style="margin-top:64px">
+      <div class="reveal" style="font-family:'Fraunces',serif;font-size:24px;margin-bottom:22px">Technical toolkit</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px" data-skills>
+        <sc-for list="{{ techGroups }}" as="g" hint-placeholder-count="6">
+          <div class="reveal card-lift" style="padding:20px;border:1px solid #232c26;border-radius:14px;background:#11181400" style-hover="border-color:#3f4d42">
+            <div style="font-size:12px;color:#c8ff5a;margin-bottom:12px;font-weight:600">{{ g.label }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <span style="font-size:12px;color:#cdd6ce;background:#1a221c;border:1px solid #283129;padding:5px 11px;border-radius:30px">{{ it }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 48px 0">
+    <div class="reveal" style="display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;color:#c8ff5a">
+      <span style="width:36px;height:1px;background:#c8ff5a"></span>PROFESSIONAL EXPERIENCE
+    </div>
+    <h2 class="reveal" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4vw,52px);margin:24px 0 48px;letter-spacing:-0.02em">Roles &amp; responsibilities</h2>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="2">
+        <div class="reveal" style="display:grid;grid-template-columns:200px 1fr;gap:40px;padding:32px 0;border-top:1px solid #232c26" data-exp>
+          <div>
+            <div style="font-family:'Fraunces',serif;font-size:21px">{{ r.organization }}</div>
+            <div style="font-size:13px;color:#c8ff5a;margin-top:6px">{{ r.role }}</div>
+            <div style="font-size:12px;color:#8fa093;margin-top:10px">{{ r.dates }}</div>
+            <div style="font-size:12px;color:#8fa093;margin-top:3px">{{ r.location }}</div>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ r.bullets }}" as="b" hint-placeholder-count="3">
+              <li style="position:relative;padding-left:22px;font-size:15px;color:#c3cdc4;line-height:1.55">
+                <span style="position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:#ff8a5c"></span>{{ b }}
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid #232c26"></div>
+    </div>
+  </section>
+
+  <!-- ===== WORK ===== -->
+  <section id="work" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 48px 0">
+    <div class="reveal" style="display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;color:#c8ff5a">
+      <span style="width:36px;height:1px;background:#c8ff5a"></span>SELECTED PROJECTS
+    </div>
+    <h2 class="reveal" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4vw,52px);margin:24px 0 48px;letter-spacing:-0.02em">Things I've helped build</h2>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <div class="reveal card-lift" style="display:grid;grid-template-columns:1fr 1.4fr;gap:40px;padding:34px;border:1px solid #283129;border-radius:22px;background:#131b16;align-items:center" style-hover="border-color:#c8ff5a;background:#16201a" data-proj>
+          <div>
+            <div style="font-size:12px;color:#ff8a5c;letter-spacing:1px">{{ p.label }}</div>
+            <div style="font-family:'Fraunces',serif;font-size:clamp(22px,2.4vw,30px);line-height:1.12;margin-top:14px">{{ p.title }}</div>
+          </div>
+          <div>
+            <p style="font-size:15px;color:#c3cdc4;line-height:1.6;margin:0 0 14px">{{ p.description }}</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="2">
+                <li style="position:relative;padding-left:20px;font-size:14px;color:#a9b4aa;line-height:1.5">
+                  <span style="position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#c8ff5a"></span>{{ b }}
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== RECOGNITION ===== -->
+  <section id="recognition" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 48px 0">
+    <div class="reveal" style="display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;color:#c8ff5a">
+      <span style="width:36px;height:1px;background:#c8ff5a"></span>CERTIFICATIONS &amp; ACHIEVEMENTS
+    </div>
+    <h2 class="reveal" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4vw,52px);margin:24px 0 48px;letter-spacing:-0.02em">Recognition &amp; milestones</h2>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:24px" data-cols>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ achievements }}" as="a" hint-placeholder-count="3">
+          <div class="reveal card-lift" style="padding:24px;border:1px solid #283129;border-radius:16px;background:#131b16" style-hover="border-color:#c8ff5a">
+            <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline">
+              <div style="font-family:'Fraunces',serif;font-size:18px;line-height:1.2">{{ a.title }}</div>
+              <div style="font-size:12px;color:#ff8a5c;white-space:nowrap">{{ a.date }}</div>
+            </div>
+            <div style="font-size:13.5px;color:#a3aea4;margin-top:10px;line-height:1.55">{{ a.description }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="reveal" style="padding:24px;border:1px solid #283129;border-radius:16px;background:#131b16">
+          <div style="font-size:11px;letter-spacing:2px;color:#c8ff5a;margin-bottom:14px">CERTIFICATIONS</div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="5">
+              <li style="position:relative;padding-left:20px;font-size:13.5px;color:#c3cdc4;line-height:1.5">
+                <span style="position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:#c8ff5a"></span>{{ c }}
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+        <div class="reveal" style="padding:24px;border:1px solid #283129;border-radius:16px;background:#131b16">
+          <div style="font-size:11px;letter-spacing:2px;color:#c8ff5a;margin-bottom:14px">LANGUAGES</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ languages }}" as="l" hint-placeholder-count="3">
+              <div style="display:flex;justify-content:space-between;font-size:14px">
+                <span style="color:#e7ece6">{{ l.name }}</span><span style="color:#8fa093">{{ l.level }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:130px 48px 110px">
+    <div style="position:relative;border:1px solid #283129;border-radius:30px;background:linear-gradient(135deg,#16201a,#11181400);padding:64px 56px;overflow:hidden">
+      <div style="position:absolute;top:-120px;right:-80px;width:340px;height:340px;background:radial-gradient(circle at 40% 40%,#c8ff5a,transparent 70%);opacity:0.18;animation:blobMorph 16s ease-in-out infinite"></div>
+      <div class="reveal" style="position:relative;font-size:12px;letter-spacing:3px;color:#c8ff5a">LET'S WORK TOGETHER</div>
+      <h2 class="reveal" style="position:relative;font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,6vw,84px);line-height:0.95;letter-spacing:-0.02em;margin:20px 0 0">
+        Let's build<br>something <em style="font-style:italic;color:#c8ff5a">together.</em>
+      </h2>
+      <p class="reveal" style="position:relative;max-width:560px;font-size:16px;color:#bcc6bd;line-height:1.65;margin:26px 0 0">
+        Ready to work across available entry-level job profiles and assist teams with project tracking, report maintenance, process improvement and on-time delivery.
+      </p>
+      <div class="reveal" style="position:relative;display:flex;flex-wrap:wrap;gap:14px;margin-top:36px">
+        <a href="mailto:dashamishetty2004@gmail.com" style="background:#c8ff5a;color:#0e1411;padding:15px 26px;border-radius:40px;font-weight:600;font-size:14px;text-decoration:none;transition:transform .2s" style-hover="transform:translateY(-3px)">dashamishetty2004@gmail.com</a>
+        <a href="tel:8971408959" style="border:1px solid #3a463e;color:#f3efe6;padding:15px 26px;border-radius:40px;font-size:14px;text-decoration:none;transition:border-color .2s" style-hover="border-color:#c8ff5a">+91 89714 08959</a>
+        <a href="https://www.linkedin.com/in/dashamis5426" target="_blank" style="border:1px solid #3a463e;color:#f3efe6;padding:15px 26px;border-radius:40px;font-size:14px;text-decoration:none;transition:border-color .2s" style-hover="border-color:#c8ff5a">LinkedIn ↗</a>
+        <a href="https://github.com/dashami-s" target="_blank" style="border:1px solid #3a463e;color:#f3efe6;padding:15px 26px;border-radius:40px;font-size:14px;text-decoration:none;transition:border-color .2s" style-hover="border-color:#c8ff5a">GitHub ↗</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:40px;font-size:12px;color:#6c7a6e;flex-wrap:wrap;gap:10px">
+      <span>© 2026 Dashami S — Bengaluru, Karnataka</span>
+      <span style="font-family:'Fraunces',serif;font-style:italic">Designed with intent.</span>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const root = this.base || document;
+    const bar = root.querySelector('[data-progress]');
+    const hero = root.querySelector('section');
+    const blobs = hero ? hero.querySelectorAll('div[style*="blur"]') : [];
+    const h1 = root.querySelector('h1');
+    const marquee = root.querySelector('div[style*="marqueeX"]');
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const sc = window.scrollY || window.pageYOffset;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (bar) bar.style.width = (max > 0 ? (sc / max) * 100 : 0) + '%';
+        if (blobs[0]) blobs[0].style.transform = 'translateY(' + (sc * 0.28) + 'px) scale(' + (1 + sc * 0.0004) + ')';
+        if (blobs[1]) blobs[1].style.transform = 'translateY(' + (-sc * 0.18) + 'px)';
+        const vh = window.innerHeight;
+        if (h1) { const p = Math.min(sc / vh, 1); h1.style.transform = 'translateY(' + (sc * 0.16) + 'px)'; h1.style.opacity = (1 - p * 0.75); }
+        if (marquee) marquee.style.transform = 'translateX(' + (-(sc * 0.25) % 50 - 0) + '%)';
+        ticking = false;
+      });
+    };
+    this._onScroll = onScroll;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    const els = this.base ? this.base.querySelectorAll('.reveal') : document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach((e, i) => { e.style.transitionDelay = (Math.min(i % 4, 3) * 0.07) + 's'; io.observe(e); });
+  }
+  renderVals() {
+    return {
+      stats: [
+        { value: "Top 10", label: "Inventra'25 Capstone shortlist" },
+        { value: "26/450", label: "Student Project Expo 2024 rank" },
+        { value: "50+", label: "RC Rally participants supported" }
+      ],
+      aboutCards: [
+        { label: "ROLE FOCUS", title: "Ready for suitable job profiles", description: "Prepared to contribute across entry-level roles with focus on project tracking, reporting and execution support." },
+        { label: "STRENGTH", title: "Coordination & documentation", description: "Experience with project coordination, approvals and structured documentation in academic and organizational teams." },
+        { label: "WORK STYLE", title: "Collaborative & detail-oriented", description: "Combines professional communication, analytical problem solving and accountability in fast-paced team environments." }
+      ],
+      techGroups: [
+        { label: "Programming & Scripting", items: ["Python", "Java", "JavaScript", "C++", "C#"] },
+        { label: "Data Analysis & Reporting", items: ["NumPy", "Pandas", "Power BI", "Excel"] },
+        { label: "Web & App Fundamentals", items: ["HTML", "CSS", "Node.js"] },
+        { label: "Databases", items: ["MySQL"] },
+        { label: "Version Control", items: ["GitHub"] },
+        { label: "Hardware & Embedded", items: ["Arduino", "Raspberry Pi", "ESP32"] }
+      ],
+      roles: [
+        { organization: "STEM Club", role: "Social Media Manager", dates: "08/2025 – Present", location: "Presidency University, Bengaluru", bullets: ["Planned and organized club activities and tracked engagement outcomes.", "Coordinated with team members and faculty for approvals and updates.", "Maintained basic documentation and progress updates."] },
+        { organization: "BUILD Club", role: "Core Member", dates: "07/2024 – Present", location: "Presidency University, Bengaluru", bullets: ["Supported project and event execution through task coordination.", "Assisted in documentation and the smooth conduct of workshops.", "Collaborated with peers to ensure timely completion of activities."] }
+      ],
+      projects: [
+        { label: "07/2025 – PRESENT", title: "AI-Powered Autonomous Security RoboDog", description: "Capstone project. Planned project activities and coordinated task execution across the team.", bullets: ["Maintained documentation and progress updates.", "Delivered a working prototype — shortlisted in the Top 10 projects."] },
+        { label: "04/2025 – 05/2025", title: "Personal Finance Tracker — Web App", description: "Analyzed user needs and translated them into application features.", bullets: ["Ensured accuracy of financial calculations and data flow.", "Created dashboards for clear data visualization."] },
+        { label: "10/2023 – 05/2024", title: "Handibuddy.com — Mobile App", description: "Analyzed user needs with a focus on accessibility.", bullets: ["Documented workflows and supported feature delivery."] }
+      ],
+      achievements: [
+        { title: "INVENTRA'25 — Capstone Project Expo", date: "27/11/2025", description: "Presidency University. Represented the ROBO-DOG project, reaching the Top 10. A hardware project with face detection — an AI-powered autonomous security robot." },
+        { title: "IoT & Robotics — VAC Certification", date: "07/07/2025", description: "Hands-on experience with sensors, automation and building prototypes like an object-detecting car and RoboDog." },
+        { title: "Student Project Expo 2024", date: "03/06/2024", description: "Ranked 26th out of 450 projects. Built two websites — one for brain haemorrhage and another detecting stages of lung disease." }
+      ],
+      certifications: [
+        "The Complete Full-Stack Web Development Bootcamp",
+        "Data Visualization Techniques — Infosys Springboard",
+        "Machine Learning using Python — SimpliLearn SkillUP",
+        "Microsoft Power BI Desktop for Business Intelligence",
+        "AWS Certified Cloud Practitioner CLF-C02 (2025)"
+      ],
+      languages: [
+        { name: "Kannada", level: "Native / Bilingual" },
+        { name: "English", level: "Fluent" },
+        { name: "Hindi", level: "Basic" }
+      ]
+    };
+  }
+}
+</script>
 </body>
 </html>
